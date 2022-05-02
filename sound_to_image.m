@@ -1,7 +1,7 @@
 %Written by Raphaël BOICHOT 2022-04-12
 %syntax example: sound_to_image('./sounds/DMG_clean.ogg',10) targets file DMG.ogg and a scaling factor of 10
 %code written for GNU Octave/Matlab
-%Code made to translate sound files from https://github.com/HerrZatacke/XXXXXXXXXX
+%Code made to translate sound files from https://github.com/HerrZatacke/custom-camera-rom
 function []=sound_to_image(audio_file,scaling_factor)
 try
 pkg load image %added for GNU Octave compatibility
