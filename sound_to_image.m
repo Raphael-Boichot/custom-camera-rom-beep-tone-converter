@@ -47,17 +47,17 @@ while tile<225;%to avoid buffer overflow
             %             comes back to the first tile missed but not
             %             further if there are several missing consecutively
             if tile==0||tile==1;%error could be sometimes high on tile 1 for no reason 
-                %but tile as 1 is not included into the image we basically 
+                %but as tile 1 is not included into the image we basically 
                 %don't give a shit of this one
                  last_good_known_address=k;%force the code to start reading on the mandatory first 17tone
             else
                 error=k-last_good_known_address-packet_len_tips;
-                if error>1000% There is an error, next 17th tone is afrther than expected
+                if error>1000% There is an error, next 17th tone is farther than expected
                     error_code=1;
                     disp('Error detected, rewinding to the last estimated 17th tone')
                     missing_tiles=1+floor(error/packet_len_tips);%estimates how many tiles are missing
                     disp([num2str(missing_tiles),' tile(s) missing'])
-                    last_good_known_address=k;%store this address for later as the code will rewinf the audio file
+                    last_good_known_address=k;%store this address for later as the code will rewind the audio file
                     k=last_good_known_address-missing_tiles*packet_len_tips;%rewind to the first missing tile.
                     %if one tile is missing, the code just re-read the
                     %area with estimated good address, the code is the same
@@ -85,9 +85,9 @@ while tile<225;%to avoid buffer overflow
             end
             
             %error correction algorithm, read the file in open loop without
-            %searching for tone 17 if more than one time was missing (first
-            %tile corrected before
-            missing_tiles=missing_tiles-1;%the first tile was fixed in the upper part of the code
+            %searching for tone 17 if more than one tile was missing (first
+            %tile corrected before)
+            missing_tiles=missing_tiles-1;%the first tile was yet fixed in the upper part of the code
             while missing_tiles>0% the code enters an open loop reading of several tiles
                 disp('Continuing open loop reading...')
                 tile=tile+1;%forcing a tile even without 17th tone
@@ -114,7 +114,7 @@ while tile<225;%to avoid buffer overflow
         disp('Code break due to missing tiles')
     end
 end
-data=data(33:end);%gets rid og the first "test frequency tile"
+data=data(33:end);%gets rid of the first "test frequency tile"
 pos=1;
 recovered_data=zeros(1,224*16);%pre-allocate in case there are not enough tiles
 for k=1:1:length(data)/2
