@@ -1,3 +1,5 @@
+**Note: this archive is no longer maintained since Januray 2024. Enjoy it as it is !**
+
 # custom-camera-rom-beep-tone-converter
 An experimental beep tone to image converter for the [2bit PXLR Studio project](https://github.com/HerrZatacke/custom-camera-rom). The code features a [Fast Fourier Transform](https://en.wikipedia.org/wiki/Fast_Fourier_transform) to recover binary data from the soundfile. It is able to cancel interferences with other frequencies and to read damaged soundfiles as soon as the recording level is sufficiently high.
 
